@@ -1,6 +1,6 @@
 @import "./variables.css";
 
-input[type="text"] {
+input#search {
   border: 2px solid white;
   background-color: var(--black);
   border-radius: 5px;
