@@ -6,37 +6,40 @@
     <title>Document</title>
   </head>
   <body>
-    <form>
-      <input type="text" id="search" name="search" placeholder="london" />
-      <input type="submit" value="Search" />
-    </form>
-    <div id="error-container"></div>
-    <div id="result-container">
-      <div class="name container">
-        <span>City: </span>
-        <span class="name result">N/A</span>
-      </div>
-      <div class="conditions container">
-        <span class="conditions result"></span>
-      </div>
-      <div class="description container">
-        <span class="description result"></span>
-      </div>
-      <div class="temp container">
-        <span>Temperature: </span>
-        <span class="temp result">N/A</span>
-      </div>
-      <div class="feelslike container">
-        <span>Feels like: </span>
-        <span class="feelslike result">N/A</span>
-      </div>
-      <div class="cloudcover container">
-        <span>Cloud cover: </span>
-        <span class="cloudcover result">N/A</span>
-      </div>
-      <div class="humidity container">
-        <span>Humidity: </span>
-        <span class="humidity result">N/A</span>
+    <div id="main-container">
+      <form>
+        <input type="text" id="search" name="search" placeholder="london" />
+        <input type="submit" value="Search" />
+      </form>
+      <div class="loader"></div>
+      <div id="error-container"></div>
+      <div id="result-container">
+        <div class="name container">
+          <span>City: </span>
+          <span class="name result">N/A</span>
+        </div>
+        <div class="conditions container">
+          <span class="conditions result">N/A</span>
+        </div>
+        <div class="description container">
+          <span class="description result">N/A</span>
+        </div>
+        <div class="temp container">
+          <span>Temperature: </span>
+          <span class="temp result">N/A</span>
+        </div>
+        <div class="feelslike container">
+          <span>Feels like: </span>
+          <span class="feelslike result">N/A</span>
+        </div>
+        <div class="cloudcover container">
+          <span>Cloud cover: </span>
+          <span class="cloudcover result">N/A</span>
+        </div>
+        <div class="humidity container">
+          <span>Humidity: </span>
+          <span class="humidity result">N/A</span>
+        </div>
       </div>
     </div>
   </body>

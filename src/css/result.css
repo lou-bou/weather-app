@@ -1,0 +1,17 @@
+@import "./variables.css";
+
+.description.result {
+  text-wrap-mode: wrap;
+  text-wrap-style: pretty;
+}
+
+.container {
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+#result-container span {
+  color: var(--black);
+}

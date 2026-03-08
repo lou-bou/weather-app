@@ -1,11 +1,22 @@
-import { clearErrorDOM, displayErrorDOM, updateWeatherDOM } from "./js/dom.js";
-import { getWeatherData, parseWeatherData } from "./js/retrieval.js";
+import "./styles.css";
+
+import {
+  activateLoaderComponent,
+  clearErrorDOM,
+  clearWeatherDOM,
+  deactivateLoaderComponent,
+  displayErrorDOM,
+  updateWeatherDOM,
+} from "./js/dom.js";
+import { getWeatherData, parseWeatherData } from "./js/retrievalWeather.js";
 
 const form = document.querySelector("form");
 let location;
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  activateLoaderComponent();
 
   location = form.search.value;
 
@@ -16,10 +27,13 @@ form.addEventListener("submit", async (e) => {
     const parsedWeatherData = parseWeatherData(weatherData);
 
     clearErrorDOM(); // clear error container in HTML from any previous error messages
+    clearWeatherDOM();
 
     updateWeatherDOM(parsedWeatherData);
+    deactivateLoaderComponent();
   } catch (error) {
     console.log(error);
     displayErrorDOM();
+    deactivateLoaderComponent();
   }
 });

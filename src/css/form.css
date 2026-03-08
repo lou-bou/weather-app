@@ -1,0 +1,17 @@
+@import "./variables.css";
+
+input[type="text"] {
+  border: 2px solid white;
+  background-color: var(--black);
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  color: var(--black);
+  border: none;
+  background-color: white;
+  border: 2px solid white;
+  /* not a real border but just to give the button the same size as the text input*/
+  border-radius: 5px;
+  cursor: pointer;
+}

@@ -1,6 +1,14 @@
-import { formatCityName } from "./utilities.js";
+import { getGifURL } from "./retrievalGif.js";
+import { formatCityName, getCondition } from "./utilities.js";
 
-export { updateWeatherDOM, displayErrorDOM, clearErrorDOM };
+export {
+  updateWeatherDOM,
+  displayErrorDOM,
+  clearErrorDOM,
+  clearWeatherDOM,
+  activateLoaderComponent,
+  deactivateLoaderComponent,
+};
 
 function updateWeatherDOM(parsedWeatherData) {
   const name = document.querySelector(".name.result");
@@ -23,6 +31,8 @@ function updateWeatherDOM(parsedWeatherData) {
 
   const humidity = document.querySelector(".humidity.result");
   humidity.textContent = `${parsedWeatherData.humidity}%`;
+
+  updateBackgroundGif(parsedWeatherData.conditions);
 }
 
 function clearWeatherDOM() {
@@ -46,13 +56,15 @@ function clearWeatherDOM() {
 
   const humidity = document.querySelector(".humidity.result");
   humidity.textContent = "N/A";
+
+  clearBackgroundGif();
 }
 
 function displayErrorDOM() {
   const errorContainer = document.querySelector("#error-container");
 
-  errorContainer.textContent =
-    "An error has occurred! Please make sure you enter a valid city name.";
+  errorContainer.innerText =
+    "An error has occurred!\nPlease make sure you entered a valid city name.";
 
   clearWeatherDOM();
 }
@@ -61,4 +73,37 @@ function clearErrorDOM() {
   const errorContainer = document.querySelector("#error-container");
 
   errorContainer.innerHTML = "";
+}
+
+function activateLoaderComponent() {
+  const loaderComponent = document.querySelector(".loader");
+
+  loaderComponent.classList.add("active");
+}
+
+function deactivateLoaderComponent() {
+  const loaderComponent = document.querySelector(".loader");
+
+  loaderComponent.classList.remove("active");
+}
+
+async function updateBackgroundGif(conditions) {
+  const condition = getCondition(conditions);
+
+  const gifURL = await getGifURL(condition); // get a corresponding gif to the weather condition. using await because the function is async
+
+  if (gifURL) {
+    const body = document.querySelector("body");
+
+    body.setAttribute("style", `background-image: url(${gifURL})`); // set background to gif
+    body.classList.add("animated"); // for extra styling
+  }
+}
+
+function clearBackgroundGif() {
+  // return it to default background (--black)
+  const body = document.querySelector("body");
+
+  body.setAttribute("style", "background-image: none");
+  body.classList.remove("animated");
 }

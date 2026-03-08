@@ -1,0 +1,48 @@
+@import "./css/variables.css";
+@import "./css/form.css";
+@import "./css/result.css";
+@import "./css/error.css";
+@import "./css/loading.css";
+
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  font-size: 110%;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  /* make body fill screen */
+  width: 100vh;
+  height: 100vh;
+
+  background-color: var(
+    --black
+  ); /* default background if gif fails to load or no query yet */
+
+  margin: 0 auto; /* center body */
+}
+
+body.animated {
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: lighten;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  max-width: 430px; /* this is the max width before text over extends the total form width (input + submit) */
+}
