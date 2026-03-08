@@ -1,5 +1,3 @@
-# webpack-template
+# weather-app
 
-A webpack template to save you time.
-
-See [the guide](GUIDE.md).
+A simple weather app. Part of the TOP curriculum projects.
