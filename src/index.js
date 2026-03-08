@@ -1,3 +1,4 @@
+import { clearErrorDOM, displayErrorDOM, updateWeatherDOM } from "./js/dom.js";
 import { getWeatherData, parseWeatherData } from "./js/retrieval.js";
 
 const form = document.querySelector("form");
@@ -10,8 +11,15 @@ form.addEventListener("submit", async (e) => {
 
   form.search.value = ""; // clear it after
 
-  const weatherData = await getWeatherData(location);
-  const parsedWeatherData = parseWeatherData(weatherData);
+  try {
+    const weatherData = await getWeatherData(location);
+    const parsedWeatherData = parseWeatherData(weatherData);
 
-  console.log(parsedWeatherData);
+    clearErrorDOM(); // clear error container in HTML from any previous error messages
+
+    updateWeatherDOM(parsedWeatherData);
+  } catch (error) {
+    console.log(error);
+    displayErrorDOM();
+  }
 });
